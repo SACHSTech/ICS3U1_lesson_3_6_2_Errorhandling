@@ -2,62 +2,63 @@
 
 # **3.6.2 Run-Time Errors and Exceptions**
 
-Run-time errors are errors that occur while your program runs. Syntactically the program may be correct, however, these typically occur when your program attempts an operation that is impossible to carry out.
+Run-time errors are errors that occur while your program runs. Syntactically the program may be correct, however, these typically occur when your program attempts an operation that is impossible to carry out. These impossible operations or failed operations are called **exceptions**.
 
 An example of this is division by zero. Suppose you had the following program:
 
 
 ```
-import java.util.Scanner;
+class DivisionByZero extends ConsoleProgram {
 
-public class Speed {
-   public static void main(String[] args){
-       Scanner scan = new Scanner(System.in);
-       int speed;
+  /**
+  * A speed calculation program that demonstrates an Arithmetic exception
+  * @author:E. Fabroa
+  */
+  
+  public void run() {
+    double dblDistance;
+    double dblSpeed;
+    double dblHours;
 
-       System.out.print("Enter the distance travelled:  ");
-       int distance = scan.nextInt();
+    dblDistance = readDouble("Enter the distance travelled: ");
+    dblHours = readDouble("Enter the hours elapsed: ");
 
-       System.out.print("Enter the hours elapsed:  ");
-       int hours = scan.nextInt();
+    dblSpeed = dblDistance/dblHours;
 
-       speed = distance/hours;
-
-       System.out.println("The speed is " + speed);
-   }
+    System.out.println("The speed is " + dblSpeed);
+  }  
 }
+
+
 ```
 
-
-If the variable hours has a value of 0, the division operation fails and causes a run-time error. The program must run in order for this error to be detected, and if hours contains a valid value, it will not occur at all.
+If the variable hours has a value of 0, the division operation fails and causes a run-time error or exception. Specifically, this is an `ArithmeticException` that occurs when something goes wrong during an arithmetic operation.   The program must run in order for this error to be detected, and if hours contains a valid value, it will not occur at all.
 
 Some other examples:
 
-
-
-* incorrect data type entered (i.e double inputted when int expected)
-* square root of a negative number
-* referring to an invalid index of a String when doing substring
+* incorrect data type entered (i.e double inputted when int expected) - 
+* square root of a negative number - `ArithmeticException`
+* referring to an invalid index of a String when doing substring - `IndexOutOfBoundsException`
 
 
 
 
-#### **Dealing with Run-Time Errors**
+## **Dealing with Run-Time Errors**
 
 
-##### **Exception Handling**
+### **Exception Handling**
 
 One option for handling run-time errors is to detect cases where run-time errors would occur and build in conditions to handle those cases.  
 
 
-##### **Exception Handling General Form**
+#### **Exception Handling General Form**
 
 
 ```
 try{
     … code to execute
 }	
-catch (type-of-exception id){
+catch (type-of-exception error_object){
     … code the handle exception
 }
 
@@ -71,72 +72,50 @@ When we ran the above program with hours 0 and had the `ArithmeticException` err
 
 
 ```
-import java.util.Scanner;
+class DivisionByZero2 extends ConsoleProgram {
 
-public class Speed {
-   public static void main(String[] args){
-       Scanner scan = new Scanner(System.in);
-       int speed;
+  /**
+  * A speed calculation program that demonstrates an Arithmetic exception
+  * @author:E. Fabroa
+  */
+  
+  public void run() {
+    double dblDistance;
+    double dblSpeed;
+    double dblHours;
 
-       System.out.print("Enter the distance travelled:  ");
-       int distance = scan.nextInt();
+    dblDistance = readDouble("Enter the distance travelled: ");
+    dblHours = readDouble("Enter the hours elapsed: ");  // enter 0 for this
 
-       System.out.print("Enter the hours elapsed:  ");
-       int hours = scan.nextInt();
+    // apply exception handling to this
+    try {
+      
+    } catch (ArithmeticException err) {
+        System.out.println("Hours must be greater than 0.");
+    }
+    dblSpeed = dblDistance/dblHours;
 
-       try{
-           speed = distance/hours;
-           System.out.println("The speed is " + speed);
-
-       }catch (ArithmeticException e){
-           System.out.println("Invalid input. Hours must be greater than 0");
-       }
-   }
+    System.out.println("The speed is " + dblSpeed);
+  }  
 }
+```
 
-We can also utilize the 'e' error variable to get details on the error.
+We can also utilize the 'err' error variable to get details on the error.
 
 try{
    speed = distance/hours;
    System.out.println("The speed is " + speed);
 
-}catch (ArithmeticException e){
-   System.out.println("The monkeys have detected an issue: " + e.getMessage());
+}catch (ArithmeticException err){
+   System.out.println("The monkeys have detected an issue: " + err.getMessage());
 }
 ```
 
+## Example: IndexOutofBoundsException
 
-We can modify the try-catch to include the user input portions of the code to prevent non-int input from crashing the program.
 
 
-```
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
-public class Speed {
-   public static void main(String[] args){
-       Scanner scan = new Scanner(System.in);
-       int speed;
-
-       try{
-           System.out.print("Enter the distance travelled:  ");
-           int distance = scan.nextInt();
-
-           System.out.print("Enter the hours elapsed:  ");
-           int hours = scan.nextInt();
-
-           speed = distance/hours;
-           System.out.println("The speed is " + speed);
-
-       }catch (ArithmeticException err){
-           System.out.println("The monkeys have detected an issue: " + err.getMessage());
-       }catch (InputMismatchException err){
-           System.out.println("Error when inputting data, you must enter integers only.");
-
-       }
-   }
-}
-```
 
 
 
