@@ -8,24 +8,18 @@ An example of this is division by zero. Suppose you had the following program:
 
 
 ```
-import java.util.Scanner;
+  public void run() {
+    double dblDistance;
+    double dblSpeed;
+    double dblHours;
 
-public class Speed {
-   public static void main(String[] args){
-       Scanner scan = new Scanner(System.in);
-       int speed;
+    dblDistance = readDouble("Enter the distance travelled: ");
+    dblHours = readDouble("Enter the hours elapsed: ");
 
-       System.out.print("Enter the distance travelled:  ");
-       int distance = scan.nextInt();
+    dblSpeed = dblDistance/dblHours;
 
-       System.out.print("Enter the hours elapsed:  ");
-       int hours = scan.nextInt();
-
-       speed = distance/hours;
-
-       System.out.println("The speed is " + speed);
-   }
-}
+    System.out.println("The speed is " + dblSpeed);
+  }  
 ```
 
 

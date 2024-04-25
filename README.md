@@ -16,20 +16,19 @@ class DivisionByZero extends ConsoleProgram {
   */
   
   public void run() {
-    double dblDistance;
-    double dblSpeed;
-    double dblHours;
+    int intDistance;
+    int intSpeed;
+    int intHours;
 
-    dblDistance = readDouble("Enter the distance travelled: ");
-    dblHours = readDouble("Enter the hours elapsed: ");
+    intDistance = readInt("Enter the distance travelled: ");
+    intHours = readInt("Enter the hours elapsed: ");  // enter 0 for this
 
-    dblSpeed = dblDistance/dblHours;
+    intSpeed = intDistance/intHours;
 
-    System.out.println("The speed is " + dblSpeed);
+
+    System.out.println("The speed is " + intSpeed);
   }  
 }
-
-
 ```
 
 If the variable hours has a value of 0, the division operation fails and causes a run-time error or exception. Specifically, this is an `ArithmeticException` that occurs when something goes wrong during an arithmetic operation.   The program must run in order for this error to be detected, and if hours contains a valid value, it will not occur at all.
@@ -40,6 +39,25 @@ Some other examples:
 * square root of a negative number - `ArithmeticException`
 * referring to an invalid index of a String when doing substring - `IndexOutOfBoundsException`
 
+## Example: IndexOutOfBoundsException
+
+```
+class IndexOutOfBounds extends ConsoleProgram {
+
+  /**
+  * Description
+  * @author:
+  */
+  
+  public void run() {
+    String strUsername = readLine("Enter a username: ");
+    System.out.println(strUsername.substring(4,8));
+
+  }
+}
+```
+
+A runtime error occurs here if we enter "efabroa" for user input.  The exception is `IndexOutOfBoundsException` because we attempt to reference an index value that is outside of the legal range for this particular string.
 
 
 

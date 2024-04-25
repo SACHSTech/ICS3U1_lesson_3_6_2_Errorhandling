@@ -6,16 +6,17 @@ class DivisionByZero extends ConsoleProgram {
   */
   
   public void run() {
-    double dblDistance;
-    double dblSpeed;
-    double dblHours;
+    int intDistance;
+    int intSpeed;
+    int intHours;
 
-    dblDistance = readDouble("Enter the distance travelled: ");
-    dblHours = readDouble("Enter the hours elapsed: ");  // enter 0 for this
+    intDistance = readInt("Enter the distance travelled: ");
+    intHours = readInt("Enter the hours elapsed: ");  // enter 0 for this
 
-    dblSpeed = dblDistance/dblHours;
+    intSpeed = intDistance/intHours;
 
-    System.out.println("The speed is " + dblSpeed);
+
+    System.out.println("The speed is " + intSpeed);
   }  
 }
 
