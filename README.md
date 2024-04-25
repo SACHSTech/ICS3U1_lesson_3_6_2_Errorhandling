@@ -165,12 +165,11 @@ By convention, preconditions on public methods are enforced by explicit checks i
 
 
 ```
-         /**
+     /**
      * Sets the refresh rate.
      *
      * @param  rate refresh rate, in frames per second.
-     * @throws IllegalArgumentException if rate <= 0 or
-     *          rate > 100.
+     * @throws IllegalArgumentException if rate <= 0 or rate > 100.
      */
      public void setRefreshRate(int rate) {
          // Enforce specified precondition in public method
