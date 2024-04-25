@@ -35,7 +35,7 @@ If the variable hours has a value of 0, the division operation fails and causes 
 
 Some other examples:
 
-* incorrect data type entered (i.e double inputted when int expected) - 
+* incorrect data type entered (i.e double inputted when int expected) - `NumberFormatException`
 * square root of a negative number - `ArithmeticException`
 * referring to an invalid index of a String when doing substring - `IndexOutOfBoundsException`
 
@@ -50,8 +50,8 @@ class IndexOutOfBounds extends ConsoleProgram {
   */
   
   public void run() {
-    String strUsername = readLine("Enter a username: ");
-    System.out.println(strUsername.substring(4,8));
+    String strUsername = readLine("Enter a username: "); //enter "efabroa"
+    System.out.println(strUsername.substring(4,8)); //this fails because 8 is out of bounds with username "efabroa"
 
   }
 }
@@ -127,13 +127,6 @@ try{
    System.out.println("The monkeys have detected an issue: " + err.getMessage());
 }
 ```
-
-## Example: IndexOutofBoundsException
-
-
-
-
-
 
 
 ## Example: ConsoleProgram readDouble()
