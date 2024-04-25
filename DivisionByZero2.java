@@ -1,29 +1,25 @@
 class DivisionByZero2 extends ConsoleProgram {
-
   /**
   * A speed calculation program that demonstrates an Arithmetic exception
   * @author:E. Fabroa
   */
   
   public void run() {
-    double dblDistance;
-    double dblSpeed;
-    double dblHours;
+    int intDistance;
+    int intSpeed;
+    int intHours;
 
-    dblDistance = readDouble("Enter the distance travelled: ");
-    dblHours = readDouble("Enter the hours elapsed: ");  // enter 0 for this
+    intDistance = readInt("Enter the distance travelled: ");
+    intHours = readInt("Enter the hours elapsed: ");  // enter 0 for this
 
-    // apply exception handling to this
-    try {
-      
-    } catch (ArithmeticException err) {
-        System.out.println("Hours must be greater than 0.");
+    try{
+      intSpeed = intDistance/intHours;
+      System.out.println("The speed is " + intSpeed);
     }
-    dblSpeed = dblDistance/dblHours;
-
-    System.out.println("The speed is " + dblSpeed);
+    catch(ArithmeticException error){
+      System.out.println("Error: " + error.getMessage() +  ". Illegal value for hours, enter a value greater then 0.");
+    }
   }  
 
-  
 }
 

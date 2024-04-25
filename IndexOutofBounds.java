@@ -7,7 +7,7 @@ class IndexOutOfBounds extends ConsoleProgram {
   
   public void run() {
     String strUsername = readLine("Enter a username: ");
-    System.out.println(strUsername.substring(4,8));
+    System.out.println(strUsername.substring(4,8)); //this fails
 
   }
 }
